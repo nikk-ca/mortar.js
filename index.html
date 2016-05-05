@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        font-size: 14px;
+        color: #876;
+        margin: 20px;
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: 400;
+      }
+      h1 > small {
+        font-size: 12px;
+      }
+      .wait {
+        animation: pulse 100ms cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
+      }
+      @keyframes pulse {
+        from {
+          opacity: 0.5;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .mortar-image {
+        animation: appear 1s both;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translate3d(-320px, 0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>mortar.js <small>by Nik K</small></h1>
+    <div class="container"><div class="wait">Getting images&hellip;</div></div>
+
+    <script src="mortar.js"></script>
+    <script>
+      var imageFiles = [];
+      for (var i = 97; i < 123; i++) {
+        imageFiles.push('./img/' + String.fromCharCode(i) + '.jpg');
+      }
+      var container = document.querySelector('.container');
+      mortar(imageFiles, {minHeight: 160}, function(composition) {
+        for (var i = 0; i < composition.children.length; i++) {
+          composition.children[i].style.animationDelay = i*50 + 'ms';
+        }
+        composition.style.margin = 'auto';
+        container.innerHTML = '';
+        container.appendChild(composition);
+      });
+    </script>
+
+  </body>
+</html>
