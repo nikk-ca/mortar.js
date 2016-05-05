@@ -2,6 +2,8 @@
 
 Generates edge-to-edge image compositions, free of cropping.
 
+[Demo!](http://nikk-ca.github.io/mortar.js/)
+
 ### How to use
 
 ```
